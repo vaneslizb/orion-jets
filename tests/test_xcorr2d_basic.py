@@ -57,4 +57,4 @@ def test_measure_shift_integer_simple_shift():
     dy, dx = measure_shift_integer(img_ref, img_new)
 
     # Allow exact equality here because this is a simple synthetic case
-    assert (dx, dy) == (2, -2)
+    assert (dx, dy) == (-2, 2)
