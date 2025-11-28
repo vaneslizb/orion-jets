@@ -25,8 +25,9 @@ from typing import Literal
 def main(
     x: float,
     y: float,
-    operacion: Literal["sumar", "restar"] = "sumar",
+    operacion: Literal["sumar", "restar", "multiplicar", "dividir"] = "sumar",
     verbose: bool = False,
+    precision: int = 1, 
 ) -> None:
     """
     Realiza una operación aritmética simple entre dos números.
@@ -44,8 +45,16 @@ def main(
     elif operacion == "restar":
         resultado = x - y
         operador = "-"
+    elif operacion == "multiplicar":
+        resultado = x * y
+        operador = "*"
+    elif operacion == "dividir":
+        resultado = x / y
+        operador = "/"
     else:
-        raise typer.BadParameter('La operación debe ser "sumar" o "restar".')
+        raise typer.BadParameter('La operación debe ser "sumar", "restar", "multiplicar" o "dividir".')
+    
+    resultado=round(resultado, ndigits=precision)
 
     if verbose:
         print(f"{x} {operador} {y} = {resultado}")
